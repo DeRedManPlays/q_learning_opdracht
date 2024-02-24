@@ -8,23 +8,30 @@ version: 2.0
 Date: 23-01-2024
 
 to run:
-python3 main.py
+python3 main.py new 1000
 """
 
 import sys
 from time import sleep
 import pygame
+import numpy as np
 from functies_qlearn import drawgrid, drawterminal, is_terminal_state, \
-                            gen_start_position, q_value_update, create_reward_nd_qtable
+                            gen_start_position, q_value_update, create_reward_nd_qtable, load_table
 
 
 def main():
+    save_or_load = sys.argv[1]
+    generations = int(sys.argv[2])
     dt = 0
     # create color
     white = (255, 255, 255)
 
     # create the reward and qtable array
-    reward, list_terminal, q_value = create_reward_nd_qtable()
+    reward, list_terminal = create_reward_nd_qtable()
+    if save_or_load == "new":
+        q_value = np.zeros((20, 20, 4))
+    elif save_or_load == "load":
+        q_value = load_table()
 
     # create the window space
     window_height = 400
@@ -46,7 +53,7 @@ def main():
     pygame.display.set_caption("Qlearning showcase")
 
     # main for loop, how many episodes the agent gets to learn
-    for episode in range(100000000000):
+    for episode in range(generations):
         print(f"Episode: {episode}")
 
         # changes the epsilon and sleep_time
@@ -81,6 +88,7 @@ def main():
             dt = CLOCK.tick(60) / 1000
         # epsilon slowly decays, pick the larger one
         epsilon = max(epsilon - epsilon_decay, 0)
+    np.save("q_table_array", q_value)
 
 if __name__ == "__main__":
     main()

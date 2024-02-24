@@ -32,8 +32,11 @@ All libraries in the requirements.txt should be installed. <br>
 To use this program: <br>
 
 1. Put both scripts in to the same directory.
-2. Go to the main.py script.
-3. Run the main.py script
+2. use the terminal, the script needs 2 arguments:
+- If you want to use an empty q_table or load a previous one. (use: new or load)
+- Amount of generations (in numbers)
+3. use this command in the terminal: "python3 main.py new 1000"
+
 
 After running the script, a pygame window should pop up. <br>
 there are 3 states in this environment: <br>

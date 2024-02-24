@@ -52,8 +52,8 @@ def create_reward_nd_qtable():
                 list_terminal.append((x,y))
 
     # create the q_table and fill it with 0
-    q_value = np.zeros((20, 20, 4))
-    return reward, list_terminal, q_value
+
+    return reward, list_terminal
 
 def drawgrid(window_height, window_width, screen):
     """ drawGrid
@@ -239,3 +239,13 @@ def q_value_update(epsilon, q_value, reward, screen, positions):
     pygame.display.update()
 
     return q_value, (row_i, column_i, x_pos, y_pos)
+
+
+def load_table():
+    """ load_table
+    Loads previously used q_table
+
+    : return laoded q_table array
+    """
+    q_table = np.load("q_table_array.npy")
+    return q_table
