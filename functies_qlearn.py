@@ -250,6 +250,4 @@ def load_table():
     q_table = np.load("q_table_array.npy")
     return q_table
 
-def nieuwe_functie():
-    "Hierin komt een niewe functie"
-    pass
+# Je code is ruk
