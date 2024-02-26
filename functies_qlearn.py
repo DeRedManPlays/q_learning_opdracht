@@ -249,5 +249,3 @@ def load_table():
     """
     q_table = np.load("q_table_array.npy")
     return q_table
-
-# Je code is ruk
